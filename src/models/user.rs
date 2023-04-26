@@ -1,35 +1,38 @@
-#[derive(Deserialize, Debug)]
+use serde::{Serialize, Deserialize};
+use super::Board;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct User {
-    name: String,
-    stats: Stats,
+    pub name: String,
+    pub stats: Stats,
+    pub last_game: Option<(Board, Option<u64>)>
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct Stats {
-    wins: u32,
-    losses: u32
+    pub wins: u32,
+    pub losses: u32
 }
 
-pub impl User {
+impl User {
     pub fn new(name: &str) -> User {
         User {
             name: String::from(name),
             stats: Stats {
                 wins: 0,
                 losses: 0
-            }
+            },
+            last_game: None
         }
     }
 
     pub fn win(&mut self) {
         self.stats.wins += 1;
+        self.last_game = None;
     }
 
     pub fn lose(&mut self) {
         self.stats.losses += 1;
-    }
-
-    pub fn get_stats(&self) -> &Stats {
-        &self.stats
+        self.last_game = None;
     }
 }
