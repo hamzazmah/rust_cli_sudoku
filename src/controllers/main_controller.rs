@@ -477,6 +477,8 @@ mod main_controller {
                     } else {
                         play(&mut game, &mut io::stdin());
                     }
+
+                    game.user = user_controller::get_user(&game.user.name); // Update the user in case they changed their stats
                 }
             }
         }
