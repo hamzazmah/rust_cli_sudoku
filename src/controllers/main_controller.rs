@@ -316,7 +316,10 @@ mod main_controller {
             if game.board.get_value(row, col).is_some() {
                 println!("Cell already has a value, please try again. ⛔️");
                 continue;
-            } else if !game.make_move(row, col, value) {
+            } 
+            if game.make_move(row, col, value) {
+                println!("Move is Valid and is now added to the board. ✅");
+            } else {
                 println!("Invalid move, please try again. ⛔️");
             }
         }
