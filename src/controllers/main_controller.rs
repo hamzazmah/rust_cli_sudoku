@@ -5,7 +5,6 @@ mod main_controller {
     use std::io::{self, Stdin, BufRead};
     use std::fs::File;
     use std::path::Path;
-    use std::thread;
     use std::time::{Duration, Instant};
 
     //importing the models
