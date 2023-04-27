@@ -1,10 +1,11 @@
 use super::{Board, User};
 
+// Game struct to hold the board, moves, and user
 pub struct Game {
     pub board: Board,
-    pub hints: Vec<(usize, usize, u8)>,
-    pub moves: Vec<(usize, usize, Option<u8>)>,
-    pub undone_moves: Vec<(usize, usize, Option<u8>)>,
+    pub hints: Vec<(usize, usize, u32)>,
+    pub moves: Vec<(usize, usize, Option<u32>)>,
+    pub undone_moves: Vec<(usize, usize, Option<u32>)>,
     pub user: User,
     pub difficulty: Difficulty,
     pub game_type: GameType,
@@ -27,12 +28,12 @@ pub enum GameType {
 }
 
 impl Game {
-    pub fn new(user: User, difficulty: Option<Difficulty>, game_type: GameType, timer: Option<u64>) -> Self {
+    pub fn new(user: User, difficulty: Option<Difficulty>, game_type: GameType, timer: Option<u64>, size: Option<usize>, hints: Option<Vec<(usize, usize, u32)>>) -> Self {
         Self {
-            board: Board::new(),
+            board: Board::new(size.unwrap_or(9)),
             moves: Vec::new(),
             undone_moves: Vec::new(),
-            hints: Vec::new(),
+            hints: hints.unwrap_or(Vec::new()),
             user,
             difficulty: difficulty.unwrap_or(Difficulty::Easy),
             game_type,
