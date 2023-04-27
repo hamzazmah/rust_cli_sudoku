@@ -418,7 +418,6 @@ mod main_controller {
         println!("Welcome to Rust Sudoku. 👋");
 
         let user = setup_user(&mut io::stdin());
-        let cloned_user = user.clone();
 
         // Check if the user has a last game saved and ask if they want to resume it
         if user.last_game.is_some() {
@@ -432,7 +431,7 @@ mod main_controller {
                 stdin.read_line(&mut input).unwrap();
                 match input.trim().to_lowercase().as_str() {
                     "y" | "yes" => {
-                        let (board, timer, hints) = cloned_user.last_game.unwrap();
+                        let (board, timer, hints) = user.clone().last_game.unwrap();
                         let game_type = if timer.is_some() { GameType::NewTimed } else { GameType::New };
                         let mut game = Game::new(user.clone(), None, game_type, timer, Some(board.cells.len()), Some(hints));
                         game.board = board;
@@ -464,7 +463,7 @@ mod main_controller {
 
                     let size = Some(get_size(&mut io::stdin())); 
     
-                    let mut game = Game::new(user.clone(), difficulty, game_type, timer, size, None);
+                    let mut game = Game::new(user_controller::get_user(&user.name), difficulty, game_type, timer, size, None);
             
                     println!("Welcome to Rust Sudoku, {}!", game.user.name);
                     println!("Wins: {}, Losses: {}", game.user.stats.wins, game.user.stats.losses);
@@ -477,8 +476,6 @@ mod main_controller {
                     } else {
                         play(&mut game, &mut io::stdin());
                     }
-
-                    game.user = user_controller::get_user(&game.user.name); // Update the user in case they changed their stats
                 }
             }
         }
