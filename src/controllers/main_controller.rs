@@ -413,7 +413,6 @@ mod main_controller {
     // Main function to run the game
     pub fn play_game() {
         println!("Welcome to Rust Sudoku. 👋");
-        println!("Enter 'q' or 'quit' at any time to quit the game.");
 
         let user = setup_user(&mut io::stdin());
         let cloned_user = user.clone();
@@ -442,7 +441,7 @@ mod main_controller {
                 }
             }
         }
-
+        println!("Enter 'q' or 'quit' at any time to quit the game.");
         // Main game loop
         loop {
             let game_type= setup_type(&mut io::stdin());
