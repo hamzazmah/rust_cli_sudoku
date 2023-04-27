@@ -2,10 +2,11 @@ use serde::{Serialize, Deserialize};
 use super::Board;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+// User struct to hold the name and stats of the user
 pub struct User {
     pub name: String,
     pub stats: Stats,
-    pub last_game: Option<(Board, Option<u64>)>
+    pub last_game: Option<(Board, Option<u64>, Vec<(usize, usize, u32)>)>
 }
 
 #[derive(Debug, Copy, Clone, Serialize, Deserialize)]
