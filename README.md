@@ -3,11 +3,12 @@
 ## How to setup
 > Make sure [Rust & Cargo](https://www.rust-lang.org/tools/install) are installed and setup properly
 
--- Inside a terminal
--- `git clone https://github.com/hamzazmah/rust_cli_sudoku.git`
--- `cd rust_cli_sudoku`
--- `cargo run`
--- This will create an .exe file at `./target/debug/rust_cli_sudoku.exe` which you can run if on windows or use `cargo run` to run the application.
+Run these inside a terminal
+- `git clone https://github.com/hamzazmah/rust_cli_sudoku.git`
+- `cd rust_cli_sudoku`
+- `cargo run`
+
+This will create an .exe file at `./target/debug/rust_cli_sudoku.exe` which you can use to run the application or use `cargo run`.
 
 ## Main Features
 
@@ -35,7 +36,7 @@
  7. `r` to Redo a undone move
  8. `row column h` `1 2 h` to get a hint for that column
  
- ## Solve a board in a .txt file
+ ## how to Solve a board in a .txt file
  
  1. Add a file inside the root directory if running `cargo run` or if running from an .exe inside the directory where the .exe is located. Check the example `board.txt` file for reference layout
  2. Choose option 3
