@@ -36,6 +36,8 @@ This will create an .exe file at `./target/debug/rust_cli_sudoku.exe` which you 
  7. `r` to Redo a undone move
  8. `row column h` `1 2 h` to get a hint for that column
  
+ For board sizes greater than 9, continue to use numeric values. The alphabets are there for formatting.
+ 
  ## how to Solve a board in a .txt file
  
  1. Add a file inside the root directory if running `cargo run` or if running from an .exe inside the directory where the .exe is located. Check the example `board.txt` file for reference layout
